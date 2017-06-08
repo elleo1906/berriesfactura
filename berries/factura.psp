@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Documento sin título</title>
+</head>
+
+<body><form action="factura" method="get">
+  <h1><p>Facutara de empresa berries</p></h1>
+  
+  <table width="708" height="358" border="1">
+    <tr>
+      <td height="99" colspan="5">&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="96">Nombre proveedor</td>
+      <td colspan="2"><input name="usuario" type="text" id="nombre" class="nombre" placeholder="Ingrese con su ID" autofocus/ ></td>
+      <td width="96">Fecha de la factura</td>
+      <td width="137">&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Clave proveedor</td>
+      <td colspan="2">&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td width="96">&nbsp;</td>
+      <td width="96">&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
