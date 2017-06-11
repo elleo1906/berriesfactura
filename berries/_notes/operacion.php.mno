@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_Recordset1" value="name:clavenumero;datatype:int,name:numero1;datatype:int,name:numero2;datatype:int,name:resultado;datatype:int" />
+	<infoitem key="UD_conculta1" value="name:clavenumero;datatype:int,name:numero1;datatype:int,name:numero2;datatype:int,name:resultado;datatype:int" />
+</info>

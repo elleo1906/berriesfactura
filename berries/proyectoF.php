@@ -47,12 +47,17 @@ if (isset($_POST['usuario'])) {
   $password=$_POST['password'];
   $MM_fldUserAuthorization = "";
   $MM_redirectLoginSuccess = "enviar.php";
-  $MM_redirectLoginFailed = "error.php";
+ 
   $MM_redirecttoReferrer = false;
   mysql_select_db($database_usuarios, $usuarios);
   
   $LoginRS__query=sprintf("SELECT username, password FROM usuarios WHERE username=%s AND password=%s",
     GetSQLValueString($loginUsername, "text"), GetSQLValueString($password, "text")); 
+	//$result=$mysqli->query($LoginRS__query);
+	//$rows = $result->num_rows;
+	//if($rows > 0){
+		//$_SESSION[ ]
+		//}
    
   $LoginRS = mysql_query($LoginRS__query, $usuarios) or die(mysql_error());
   $loginFoundUser = mysql_num_rows($LoginRS);
@@ -70,8 +75,7 @@ if (isset($_POST['usuario'])) {
     header("Location: " . $MM_redirectLoginSuccess );
   }
   else {
-    header("Location: ". $MM_redirectLoginFailed );
-  }
+       }
 }
 ?>
 <!DOCTYPE html>
@@ -82,11 +86,12 @@ if (isset($_POST['usuario'])) {
     
     <style type= "text/css">
 	body{
-	background-position:center	
+	background-position: center;
+	background-image: url(imagenes/moras-en-zarzas-boyanas.jpg);
 	}
 	
 	form{
-	background:#808040;
+	background:;
 	width: 500px;
 	height: 450px;
 	border: 1px solid #003;
@@ -101,19 +106,57 @@ if (isset($_POST['usuario'])) {
     <link type="text/css" href="./../css/style.css" rel="stylesheet" />
     
     <link rel="stylesheet" href="boton.css">
-    
+    <link href="SpryAssets/SpryValidationPassword.css" rel="stylesheet" type="text/css">
+    <link href="SpryAssets/SpryValidationTextField.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+    #apDiv1 {
+	position: absolute;
+	width: 200px;
+	height: 58px;
+	z-index: 1;
+	left: 586px;
+	top: 616px;
+}
+    #apDiv2 {
+	position: absolute;
+	width: 223px;
+	height: 226px;
+	z-index: 1;
+	left: 75px;
+	top: 212px;
+}
+    #apDiv3 {
+	position: absolute;
+	width: 215px;
+	height: 262px;
+	z-index: 2;
+	left: 981px;
+	top: 162px;
+}
+    </style>
+<script src="SpryAssets/SpryValidationPassword.js" type="text/javascript"></script>
+<script src="SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
 </head>
  
 
     </div>
-<body background="f1.jpg">
+<body>	
+
+
   
-    <div id="envoltura">
-    <h1> <p align="center" class="encabezado"> Facturación Berries Export Company</p></h1> 
+<div id="envoltura">
+<h1> <p align="center" class="encabezado"> Facturación Berries Export Company</p></h1> 
 <form id="form-login" action="<?php echo $loginFormAction; ?>" method="POST" >
       <h2><p align="center">Inicio de Seción</p></h2>
   <div align="center">
-        <p><img src="p1.jpg" Berries.jpg" width="180" height="188" alt="logo" longdesc="file:///C|/AppServ/www/proyectoFinal/logo Berries.jpg"></p>
+    <div id="apDiv2">
+          <h2>
+            <p class="error"><a href="Index.php" class="error">Ir a la pagina de inicio</a></p>
+          </h2>
+          <p><a href="Index.php"><img src="imagenes/zarza.png" alt="" width="150" height="139"></a></p>
+    </div>
+            
+    <p><img src="imagenes/Registro1.png" width="229" height="210"></p>
         <!--=============================================================================================-->
         <!--La sisguientes 2 líneas son para agregar campos al formulario con sus respectivos labels-->
         <!--Puedes usar tantas como necesites-->
@@ -121,25 +164,39 @@ if (isset($_POST['usuario'])) {
   </div>
      <h3> <p align="center" >
         <label for="nombre" class="usuario">Usuario  </label>
+       <span id="sprytextfield1">
         <input name="usuario" type="text" id="nombre" class="nombre" placeholder="Ingrese con su ID" autofocus/ >
-     </p>
+        <span class="textfieldRequiredMsg">Se necesita un valor.</span></span></p>
   </h3>
       <div align="center">
         <p></p>
   </div>
+      <div id="apDiv1"></div>
      <h3> <p align="center" id="bot">
         <label for="pass2">Password</label>
+        <span class="passwordMinCharsState" id="sprypassword2">
         <input name="password" type="password" id="password" class="password" placeholder="Ingrese contraseña"/ >
-      </p></h3>
+        <span class="passwordRequiredMsg">Se necesita un valor.</span></span></p>
+     </h3>
       <div id="contenedor">
         <div align="center">
         <h3>  <input name="submit" type="submit" id="boton" value="Ingresar" class="boton" /></h3>
         </div>
         <div id="cuerpo" >
-          <div align="center"></div>
+          <div align="center">
+            <p><img src="imagenes/face.png" width="180" height="152"></p>
+          </div>
         </div>
       </div>
     </form>
+<div id="apDiv3">
+  <h2>&nbsp;</h2>
+  <h2 align="center"><a href="Index.php" class="error">Ir a la pagina de inicio</a> </h2>
+<a href="Index.php"><img src="imagenes/zarza.png" alt="" width="150" height="140" class="error" align="middle"></a></div>
+<script type="text/javascript">
+var sprytextfield1 = new Spry.Widget.ValidationTextField("sprytextfield1");
+var sprypassword2 = new Spry.Widget.ValidationPassword("sprypassword2");
+</script>
 </body>
 <p>&nbsp;</p>
     </html>

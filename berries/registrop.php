@@ -1,4 +1,63 @@
+<?php require_once('Connections/usuarios.php'); ?>
 <?php
+if (!function_exists("GetSQLValueString")) {
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+{
+  if (PHP_VERSION < 6) {
+    $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
+  }
+
+  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+
+  switch ($theType) {
+    case "text":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;    
+    case "long":
+    case "int":
+      $theValue = ($theValue != "") ? intval($theValue) : "NULL";
+      break;
+    case "double":
+      $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
+      break;
+    case "date":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;
+    case "defined":
+      $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
+      break;
+  }
+  return $theValue;
+}
+}
+
+$editFormAction = $_SERVER['PHP_SELF'];
+if (isset($_SERVER['QUERY_STRING'])) {
+  $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
+}
+
+if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form2")) {
+  $insertSQL = sprintf("INSERT INTO registroproveedor (idproveedor, nombreprove, apellidosprove, localidadprovee, municipioprove, emailprove) VALUES (%s, %s, %s, %s, %s, %s)",
+                       GetSQLValueString($_POST['idproveedor'], "int"),
+                       GetSQLValueString($_POST['nombreprove'], "text"),
+                       GetSQLValueString($_POST['apellidosprove'], "text"),
+                       GetSQLValueString($_POST['localidadprovee'], "text"),
+                       GetSQLValueString($_POST['municipioprove'], "text"),
+                       GetSQLValueString($_POST['emailprove'], "text"));
+
+  mysql_select_db($database_usuarios, $usuarios);
+  $Result1 = mysql_query($insertSQL, $usuarios) or die(mysql_error());
+
+  $insertGoTo = "registrop.php";
+  if (isset($_SERVER['QUERY_STRING'])) {
+    $insertGoTo .= (strpos($insertGoTo, '?')) ? "&" : "?";
+    $insertGoTo .= $_SERVER['QUERY_STRING'];
+  }
+  header(sprintf("Location: %s", $insertGoTo));
+}
+?>
+<?php
+
 //initialize the session
 if (!isset($_SESSION)) {
   session_start();
@@ -71,6 +130,21 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
   exit;
 }
 ?>
+
+<?php
+ if(isset ($_POST['registrar'])){
+	 $nombre= $_POST['Nombre'];
+	 $apellidos= $_POST['Apellidos'];
+	 $localidad= $_POST['Localidad'];
+	 $municipio= $_POST['Municipio'];
+	 $email= $_POST['Email'];
+	 $clave= $_POST['clave'];
+	
+	 
+ }
+?>
+
+
 <!doctype html>
 <html>
 <head>
@@ -78,12 +152,13 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 <title>Documento sin título</title>
 <style type= "text/css">
 	body{
-	background-position:center	
+	background-position: center;
+	background-image: url(imagenes/moras-en-zarzas-boyanas.jpg);
 	}
 	
 	form{
-	background:#808040;
-	width: 469px;
+	background:url(imagenes/descarga.jpg);
+	width: 500px;
 	border: 1px solid #003;
 	border-radius:9px;
 	-moz- border-radius:3px;
@@ -109,63 +184,51 @@ regis {
     <link type="text/css" href="./../css/style.css" rel="stylesheet" />
 </head>
 
-<body background="f1.jpg">
-<form name="form1" method="post" action="">
-  <table width="470" height="334" border="1">
-    <tr>
-      <td height="46" colspan="3"><div align="center"><h3 class="registro1">Registro de proveedores </h3></div></td>
-    </tr>
-    <tr>
-     <div align="center"> <td width="106" rowspan="6"><img src="p1.jpg" alt="logo" width="125" height="137" longdesc="file:///C|/AppServ/www/proyectoFinal/p1.jpg" align="middle"></td></div>
-      <td width="110" class="registro1">Nombre</td>
-      
-      <td width="153"><div align="center">
-        <input name="Nombre" type="text" id="nombre" class="nombre" placeholder="Ingrese su(s) nombre(s)" autofocus/ > 
-      </div></td>
-      
-    </tr>
-    <tr>
-      <td class="registro1">Apellidos</td>
-      <td><div align="center">
-        <input name="Apellidos" type="text" id="apellidos" class="apellidos" placeholder="Ingrese sus apellidos" autofocus/ > 
-      </div></td>
-    </tr>
-    <tr>
-      <td class="registro1">Localidad</td>
-      <td><div align="center">
-        <input name="Localidad" type="text" id="localidad" class="localidad" placeholder="Ingrese su localida" autofocus/ >
-      </div></td>
-    </tr>
-    <tr>
-      <td class="registro1">Municipio</td>
-      <td><div align="center">
-        <input name="Municipio" type="text" id="municipio" class="municipio" placeholder="Ingrese su municipio" autofocus/ >
-      </div></td>
-    </tr>
-    <tr>
-      <td class="registro1">Telefono</td>
-      <td><div align="center">
-        <input name="Telefono" type="text" id="telefono" class="telefono" placeholder="Ingrese su telefono" autofocus/ >
-      </div></td>
-    </tr>
-    <tr>
-      <td class="registro1">Email</td>
-      <td><div align="center">
-        <input name="Email" type="text" id="email" class="email" placeholder="Ingrese su email" autofocus/ >
-      </div></td>
-    </tr>
-    <tr>
-      <td colspan="3"> <div align="center">
-        <input name="submit" type="submit" id="boton" value="Registrar" class="boton" />
-      </div></td>
-    </tr>
-  </table>
+<body>
+
+
+
+<form method="post" name="form2" action="<?php echo $editFormAction; ?>">
+  <p align="center">&nbsp;</p>
+  <h3 align="center"> <p align="center" class="error1">Aquí puedes registrar a los nuevos Proveedores</p></h3>
+  <p align="center"><img src="imagenes/Registro1.png" width="228" height="183"></p>
+  <p align="center">&nbsp;</p>
   <div align="center">
-    <blockquote>
-      <p><a href="enviar.php" class="error1"><strong>Regresar a la pagina anteriror</strong></a></p>
-    </blockquote>
-    <p><strong><a href="<?php echo $logoutAction ?>" class="registro1">Desconectar</a></strong></p>
+    <table align="center">
+      <tr valign="baseline">
+        <td nowrap align="right">Clave</td>
+        <td><input type="text" name="idproveedor" value="001" size="32"></td>
+      </tr>
+      <tr valign="baseline">
+        <td nowrap align="right">Nombre</td>
+        <td><input type="text" name="nombreprove" value="" size="32"></td>
+      </tr>
+      <tr valign="baseline">
+        <td nowrap align="right">Apellidos</td>
+        <td><input type="text" name="apellidosprove" value="" size="32"></td>
+      </tr>
+      <tr valign="baseline">
+        <td nowrap align="right">Localidad</td>
+        <td><input type="text" name="localidadprovee" value="" size="32"></td>
+      </tr>
+      <tr valign="baseline">
+        <td nowrap align="right">Municipio</td>
+        <td><input type="text" name="municipioprove" value="" size="32"></td>
+      </tr>
+      <tr valign="baseline">
+        <td nowrap align="right">Email</td>
+        <td><input type="text" name="emailprove" value="" size="32"></td>
+      </tr>
+      <tr valign="baseline">
+        <td nowrap align="right">&nbsp;</td>
+        <td><div align="center">
+          <input type="submit" value="Registrar">
+        </div></td>
+      </tr>
+    </table>
+    <input type="hidden" name="MM_insert" value="form2">
   </div>
 </form>
+<p>&nbsp;</p>
 </body>
 </html>

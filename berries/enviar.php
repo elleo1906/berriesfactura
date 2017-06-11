@@ -78,11 +78,12 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 <title>Documento sin título</title>
 <style type= "text/css">
 	body{
-	background-position:center	
+	background-position: center;
+	background-image: url(imagenes/fond3.jpg);
 	}
 	
 	form{
-	background:#808040;
+	background:url(imagenes/descarga.jpg);
 	width: 677px;
 	border: 1px solid #003;
 	border-radius:9px;
@@ -115,15 +116,19 @@ color {
     <link type="text/css" href="./../css/style.css" rel="stylesheet" />
 </head>
 
-<body background="f1.jpg">
+<body>
 <form name="form1" method="post" action="">
   <table width="573" border="1">
     <tr>
-      <td width="162" height="357"><img src="buscarpro.jpg" width="162" height="200" align="absmiddle"> <div align="center"><p>Buscar proveedor</p> </div></td>
+      <td width="162" height="357"><a href="buscarpro.php"><img src="buscarpro.jpg" width="162" height="200" align="absmiddle"></a> 
+      <div align="center"><p>Buscar proveedor</p> </div></td>
       
       
-      <td width="162"><img src="eliminarp.jpg" width="162" height="200
-      " align="absmiddle"><div align="center"><p>Eliminar proveedor</p> </div></td>
+      <td width="162"><a href="eliminar.php"><img src="eliminarp.jpg" width="162" height="200
+      " align="absmiddle"></a>
+      <div align="center">
+        <p>Eliminar Proveedor</p>
+      </div></td>
       <td width="162"><a href="factura.php"><img src="factura.jpg" width="162" height="200" align="absmiddle"></a>
       <div align="center"><p>Realizar Factura</p> </div></td>
       <td width="59"><a href="registrop.php"><img src="Usuario.png" width="162" height="200" align="absmiddle"></a>
