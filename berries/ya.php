@@ -58,7 +58,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 function sumar() {
 var n1 = parseInt(document.form1.numero1.value);
 var n2 = parseInt(document.form1.numero2.value);
-document.form1.resultado.value=n1+n2;
+document.form1.resultado.value=n1*n2;
 }
 </script>
 
@@ -79,17 +79,23 @@ body,td,th {
 }
 </style>
 <body background="imagenes/moras-en-zarzas-boyanas.jpg">
-<form method="post" name="form1" action="<?php echo $editFormAction; ?>">
+<form method="post" name="form1"  action="pagina1.php">
   <table background="" align="center">
     <tr valign="baseline">
-      <td nowrap align="right">&nbsp;</td>
-      <td>&nbsp;</td>
+      
+      
     </tr>
     <tr valign="baseline">
       <td nowrap align="right"><table width="754" border="1">
         <tr>
-          <td colspan="4"><p align="center"><img src="imagenes/Registro1.png" alt="" width="230" height="275"></p>
-            <p align="center" class="error"><strong>Facturación de la empresa Berries Export company ubicado en el tramo Tecario-Tacambaro</strong></p></td>
+          <td colspan="4"><div align="center"><img src="imagenes/factura.png" width="1097" height="197"></div></td>
+        </tr>
+        <tr>
+          <td colspan="4"><p align="center"><img src="imagenes/Registro1.png" alt="" width="296" height="275" align="left"></p>
+            <p align="justify" class="error">&nbsp;</p>
+            <p align="justify" class="error">&nbsp;</p>
+            <p align="justify" class="error">&nbsp;</p>
+            <p align="justify" class="error"><strong> Facturación de la empresa Berries Export company ubicado en el tramo Tecario-Tacambaro</strong></p></td>
         </tr>
         <tr>
           <td width="132"><strong>Nombre del proveedor</strong></td>
@@ -118,7 +124,7 @@ body,td,th {
         <tr>
           <td colspan="4"><div align="center"><strong>
             <input type="submit" name="Submit" value="Insertar Registro" />
-          </strong></div></td>
+         <a target="_blank" href="pdf.php">Generar PDF</a> </strong></div></td>
           </tr>
       </table></td>
       <td><input type="hidden" name="action" value="add" /></td>

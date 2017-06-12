@@ -1,108 +1,102 @@
+<?php require_once('Connections/usuarios.php'); ?>
+<?php
+if (!function_exists("GetSQLValueString")) {
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+{
+  if (PHP_VERSION < 6) {
+    $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
+  }
+
+  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+
+  switch ($theType) {
+    case "text":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;    
+    case "long":
+    case "int":
+      $theValue = ($theValue != "") ? intval($theValue) : "NULL";
+      break;
+    case "double":
+      $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
+      break;
+    case "date":
+      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+      break;
+    case "defined":
+      $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
+      break;
+  }
+  return $theValue;
+}
+}
+
+$idp_Recordset1 = "-1";
+if (isset($_POST["idproveedor"])) {
+  $idp_Recordset1 = $_POST["idproveedor"];
+}
+mysql_select_db($database_usuarios, $usuarios);
+$query_Recordset1 = sprintf("SELECT * FROM registroproveedor where idproveedor=%s", GetSQLValueString($idp_Recordset1, "text"));
+$Recordset1 = mysql_query($query_Recordset1, $usuarios) or die(mysql_error());
+$row_Recordset1 = mysql_fetch_assoc($Recordset1);
+$idp_Recordset1 = "10";
+if (isset($_POST["idproveedor"])) {
+  $idp_Recordset1 = $_POST["idproveedor"];
+}
+mysql_select_db($database_usuarios, $usuarios);
+$query_Recordset1 = sprintf("SELECT * FROM registroproveedor WHERE idproveedor=%s", GetSQLValueString($idp_Recordset1, "text"));
+$Recordset1 = mysql_query($query_Recordset1, $usuarios) or die(mysql_error());
+$row_Recordset1 = mysql_fetch_assoc($Recordset1);
+$totalRows_Recordset1 = mysql_num_rows($Recordset1);
+?>
+
 <!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
 <title>Documento sin título</title>
-<style type="text/css">
-#apDiv4 {
-	position: absolute;
-	width: 657px;
-	height: 115px;
-	z-index: 4;
-	left: 334px;
-	top: 65px;
-}
-#apDiv5 {	position: absolute;
-	width: 200px;
-	height: 23px;
-	z-index: 5;
-	left: 439px;
-	top: 336px;
-}
-#apDiv3 {	position: absolute;
-	width: 360px;
-	height: 24px;
-	z-index: 3;
-	left: 688px;
-	top: 335px;
-}
-#apDiv8 {	position: absolute;
-	width: 133px;
-	height: 115px;
-	z-index: 8;
-	left: 214px;
-	top: 501px;
-}
-#apDiv1 {	position: absolute;
-	width: 200px;
-	height: 83px;
-	z-index: 1;
-	left: 578px;
-	top: 535px;
-}
-#apDiv9 {	position: absolute;
-	width: 134px;
-	height: 102px;
-	z-index: 9;
-	left: 1015px;
-	top: 492px;
-}
-#apDiv6 {	position: absolute;
-	width: 130px;
-	height: 27px;
-	z-index: 6;
-	left: 477px;
-	top: 295px;
-}
-#apDiv7 {	position: absolute;
-	width: 178px;
-	height: 26px;
-	z-index: 7;
-	left: 783px;
-	top: 298px;
-}
-#apDiv2 {
-	position: absolute;
-	width: 177px;
-	height: 115px;
-	z-index: 10;
-	left: 211px;
-	top: 281px;
-}
-</style>
-<link href="boton.css" rel="stylesheet" type="text/css">
+
 </head>
 
-<body background="Presentación11.jpg">
-<div id="apDiv4">
-  <label></label>
-  
-    <h1 align="center" class="error">Aqui encontraras los proveedores registrados en Berries</h1>
-  
-</div>
-<div id="apDiv5">
-  <input name="nombre" type="text" autofocus class="nombre" id="nombre2" placeholder="Ingrese la clave" size="35"/ >
-</div>
-<div id="apDiv3">
-  <input name="nproveedor" type="text" autofocus class="nombre" id="nombre" placeholder="Ingrese con su Nombre y Apellidos" size="60"/ >
-</div>
-<div id="apDiv8">
-  <div align="center">
-    <p><span class="error">Regresar a la pagina anterior</span>    </p>
-    <p><a href="enviar.php"><img src="imagenes/zarza.png" alt="" width="134" height="62" align="middle"></a></p>
-  </div>
-</div>
-<div id="apDiv1"><a href="https://www.facebook.com/pages/Berries-Export-Company/552993641513356?fref=ts"><img src="imagenes/facebook.jpg" alt="" width="228" height="80"></a></div>
-<div id="apDiv9">
-  <div align="center">
-    <p><span class="error">Regresar a la pagina anterior</span></p>
-    <p><a href="enviar.php"><img src="imagenes/zarza.png" alt="" width="134" height="62" align="middle"></a></p>
-  </div>
-</div>
-<div id="apDiv6">
-  <div align="center" class="error">Clave del proveedor</div>
-</div>
-<div id="apDiv7"><span class="error">Nombre del proveedor</span></div>
-<div id="apDiv2"><img src="buscarpro.jpg" width="173" height="122"></div>
+<body >
+<form name="form1" method="post" action="">
+  <p>&nbsp;</p>
+  <p>
+    <label for="idproveedor">Ingresa id del Proveedor</label>
+    <input type="text" name="idproveedor" id="idproveedor">
+    <input type="submit" name="buscar" id="buscar" value="Buscar">
+  </p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+</form>
+<p><a href="registrop.php">Has Clik para registrar un nuevo Proveedor</a></p>
+<form name="form2" method="post" action="">
+</form>
+<table border="1">
+  <tr>
+    <td>idproveedor</td>
+    <td>nombreprove</td>
+    <td>apellidosprove</td>
+    <td>localidadprovee</td>
+    <td>municipioprove</td>
+    <td>emailprove</td>
+    <td>Acciones</td>
+  </tr>
+  <?php do { ?>
+    <tr>
+      <td><?php echo $row_Recordset1['idproveedor']; ?></td>
+      <td><?php echo $row_Recordset1['nombreprove']; ?></td>
+      <td><?php echo $row_Recordset1['apellidosprove']; ?></td>
+      <td><?php echo $row_Recordset1['localidadprovee']; ?></td>
+      <td><?php echo $row_Recordset1['municipioprove']; ?></td>
+      <td><?php echo $row_Recordset1['emailprove']; ?></td>
+      <td><p><a href="modificar.php?recordID=<?php echo $row_Recordset1['idproveedor']; ?>">Editar</a></p>
+      <p><a href="eliminar1.php?recorID=<?php echo $row_Recordset1['idproveedor']; ?>">Eliminar</a></p></td>
+    </tr>
+    <?php } while ($row_Recordset1 = mysql_fetch_assoc($Recordset1)); ?>
+</table>
 </body>
 </html>
+<?php
+mysql_free_result($Recordset1);
+?>

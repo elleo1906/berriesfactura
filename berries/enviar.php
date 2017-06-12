@@ -79,7 +79,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 <style type= "text/css">
 	body{
 	background-position: center;
-	background-image: url(imagenes/fond3.jpg);
+	background-image:url(imagenes/moras-en-zarzas-boyanas.jpg);
 	}
 	
 	form{
@@ -118,17 +118,10 @@ color {
 
 <body>
 <form name="form1" method="post" action="">
-  <table width="573" border="1">
+  <table width="741" border="1">
     <tr>
       <td width="162" height="357"><a href="buscarpro.php"><img src="buscarpro.jpg" width="162" height="200" align="absmiddle"></a> 
       <div align="center"><p>Buscar proveedor</p> </div></td>
-      
-      
-      <td width="162"><a href="eliminar.php"><img src="eliminarp.jpg" width="162" height="200
-      " align="absmiddle"></a>
-      <div align="center">
-        <p>Eliminar Proveedor</p>
-      </div></td>
       <td width="162"><a href="factura.php"><img src="factura.jpg" width="162" height="200" align="absmiddle"></a>
       <div align="center"><p>Realizar Factura</p> </div></td>
       <td width="59"><a href="registrop.php"><img src="Usuario.png" width="162" height="200" align="absmiddle"></a>

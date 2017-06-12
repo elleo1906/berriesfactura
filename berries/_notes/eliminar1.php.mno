@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_Recordset1" value="name:idproveedor;datatype:int,name:nombreprove;datatype:string,name:apellidosprove;datatype:string,name:localidadprovee;datatype:string,name:municipioprove;datatype:string,name:emailprove;datatype:string" />
+</info>
