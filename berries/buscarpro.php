@@ -56,63 +56,45 @@ $totalRows_Recordset1 = mysql_num_rows($Recordset1);
 <meta charset="utf-8">
 <title>Documento sin título</title>
 
-<style type="text/css">
-body {
-	background-image: url(imagenes/moras-en-zarzas-boyanas.jpg);
-}
-</style>
-<link href="boton.css" rel="stylesheet" type="text/css">
 </head>
 
 <body >
 <form name="form1" method="post" action="">
-
-  <p>&nbsp;</p>
-  <p align="center"><img src="imagenes/buscador.png" width="1223" height="177"></p>
-  <p>&nbsp;	</p>
   <p>&nbsp;</p>
   <p>
-    <label for="idproveedor"> 
-      <div align="center"><strong class="error">Ingresa id del Proveedor</strong>
-        <input type="text" name="idproveedor" id="idproveedor">
-        <input type="submit" name="buscar" id="buscar" value="Buscar">
-      </div>
-    </label>
-    <div align="center"></div>
+    <label for="idproveedor">Ingresa id del Proveedor</label>
+    <input type="text" name="idproveedor" id="idproveedor">
+    <input type="submit" name="buscar" id="buscar" value="Buscar">
   </p>
-  <p align="center">&nbsp;</p>
+  <p>&nbsp;</p>
   <p>&nbsp;</p>
 </form>
-<p align="center"><a href="registrop.php" class="error">Has Clik para registrar un nuevo Proveedor</a></p>
+<p><a href="registrop.php">Has Clik para registrar un nuevo Proveedor</a></p>
 <form name="form2" method="post" action="">
-  <div align="center"></div>
 </form>
-<div align="center">
-  <table border="1">
-    <tr class="error">
-      <td>idproveedor</td>
-      <td>nombreprove</td>
-      <td>apellidosprove</td>
-      <td>localidadprovee</td>
-      <td>municipioprove</td>
-      <td>emailprove</td>
-      <td>Acciones</td>
+<table border="1">
+  <tr>
+    <td>idproveedor</td>
+    <td>nombreprove</td>
+    <td>apellidosprove</td>
+    <td>localidadprovee</td>
+    <td>municipioprove</td>
+    <td>emailprove</td>
+    <td>Acciones</td>
+  </tr>
+  <?php do { ?>
+    <tr>
+      <td><?php echo $row_Recordset1['idproveedor']; ?></td>
+      <td><?php echo $row_Recordset1['nombreprove']; ?></td>
+      <td><?php echo $row_Recordset1['apellidosprove']; ?></td>
+      <td><?php echo $row_Recordset1['localidadprovee']; ?></td>
+      <td><?php echo $row_Recordset1['municipioprove']; ?></td>
+      <td><?php echo $row_Recordset1['emailprove']; ?></td>
+      <td><p><a href="modificar.php?recordID=<?php echo $row_Recordset1['idproveedor']; ?>">Editar</a></p>
+      <p><a href="eliminar1.php?recorID=<?php echo $row_Recordset1['idproveedor']; ?>">Eliminar</a></p></td>
     </tr>
-    <?php do { ?>
-      <tr>
-        <td class="error"><?php echo $row_Recordset1['idproveedor']; ?></td>
-        <td class="error"><?php echo $row_Recordset1['nombreprove']; ?></td>
-        <td class="error"><?php echo $row_Recordset1['apellidosprove']; ?></td>
-        <td class="error"><?php echo $row_Recordset1['localidadprovee']; ?></td>
-        <td class="error"><?php echo $row_Recordset1['municipioprove']; ?></td>
-        <td class="error"><?php echo $row_Recordset1['emailprove']; ?></td>
-        <td class="error"><p><a href="modificar.php?recordID=<?php echo $row_Recordset1['idproveedor']; ?>" class="error">Editar</a></p>
-        <p><a href="eliminar1.php?recorID=<?php echo $row_Recordset1['idproveedor']; ?>" class="error1">Eliminar</a></p></td>
-      </tr>
-      <?php } while ($row_Recordset1 = mysql_fetch_assoc($Recordset1)); ?>
-  </table>
-  <p><a href="enviar.php" class="error">Regresar al menu de acciones</a></p>
-</div>
+    <?php } while ($row_Recordset1 = mysql_fetch_assoc($Recordset1)); ?>
+</table>
 </body>
 </html>
 <?php

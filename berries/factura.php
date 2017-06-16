@@ -2,8 +2,6 @@
 <html>
 <head>
 
-
-
 <style type= "text/css">
 	body{
 	background-position: center;
@@ -64,13 +62,7 @@
 <meta charset="utf-8">
 <title>Documento sin título</title>
 
-<script>
-function sumar() {
-var n1 = parseInt(document.form1.numero1.value);
-var n2 = parseInt(document.form1.numero2.value);
-document.form1.resultado.value=n1*n2;
-}
-</script>
+
 
 </head>
 
@@ -115,11 +107,11 @@ document.form1.resultado.value=n1*n2;
       
         Grande</td>
       <td><div align="center">
-        <input type="text" name="numero1" id="numero1" size="20" onChange="sumar()">
+        <input name="camp1" type="number" autofocus class="nombre" id="nombre3" placeholder="" size="17"/ >
       </div></td>
-      <td><input type="text" name="numero2" id="numero2" size="20" onChange="sumar()"></td>
+      <td><input name="camp2" type="number" autofocus class="nombre" id="nombre9" placeholder="" size="20"/ ></td>
       <td><div align="center">
-        <input type="text" name="resultado"   id="resultado" size="20">
+        <input name="result" type="text" autofocus class="nombre" id="nombre12" placeholder="" size="17"/ >
       </div></td>
     </tr>
     <tr>

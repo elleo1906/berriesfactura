@@ -1,33 +1,5 @@
 <?php require_once('Connections/usuarios.php'); ?>
 <?php
-//initialize the session
-if (!isset($_SESSION)) {
-  session_start();
-}
-
-// ** Logout the current user. **
-$logoutAction = $_SERVER['PHP_SELF']."?doLogout=true";
-if ((isset($_SERVER['QUERY_STRING'])) && ($_SERVER['QUERY_STRING'] != "")){
-  $logoutAction .="&". htmlentities($_SERVER['QUERY_STRING']);
-}
-
-if ((isset($_GET['doLogout'])) &&($_GET['doLogout']=="true")){
-  //to fully log out a visitor we need to clear the session varialbles
-  $_SESSION['MM_Username'] = NULL;
-  $_SESSION['MM_UserGroup'] = NULL;
-  $_SESSION['PrevUrl'] = NULL;
-  unset($_SESSION['MM_Username']);
-  unset($_SESSION['MM_UserGroup']);
-  unset($_SESSION['PrevUrl']);
-	
-  $logoutGoTo = "Index.php";
-  if ($logoutGoTo) {
-    header("Location: $logoutGoTo");
-    exit;
-  }
-}
-?>
-<?php
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
 {
@@ -99,42 +71,30 @@ $totalRows_rsNombres = mysql_num_rows($rsNombres);
 <head>
 <meta charset="utf-8">
 <title>Documento sin título</title>
-<link href="boton.css" rel="stylesheet" type="text/css">
-<style type="text/css">
-body {
-	background-image: url(imagenes/moras-en-zarzas-boyanas.jpg);
-}
-</style>
 </head>
 
-<body background="imagenes/moras-en-zarzas-boyanas.jpg">
+<body>
+mjodificar
 <form method="post" name="form1" action="<?php echo $editFormAction; ?>">
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <h1><p align="center" class="error">Estas a punto de modificar un registro de un proveedor</p></h1>
-  <p>&nbsp;</p>
-  <p align="center"><img src="imagenes/proveedores.png" width="160" height="160"></p>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
   <table align="center">
     <tr valign="baseline">
-      <td align="right" nowrap class="error"><div align="left">Nombreprove:</div></td>
+      <td nowrap align="right">Nombreprove:</td>
       <td><input type="text" name="nombreprove" value="<?php echo htmlentities($row_rsNombres['nombreprove'], ENT_COMPAT, 'utf-8'); ?>" size="32"></td>
     </tr>
     <tr valign="baseline">
-      <td align="right" nowrap class="error"><div align="left">Apellidosprove:</div></td>
+      <td nowrap align="right">Apellidosprove:</td>
       <td><input type="text" name="apellidosprove" value="<?php echo htmlentities($row_rsNombres['apellidosprove'], ENT_COMPAT, 'utf-8'); ?>" size="32"></td>
     </tr>
     <tr valign="baseline">
-      <td align="right" nowrap class="error"><div align="left">Localidadprovee:</div></td>
+      <td nowrap align="right">Localidadprovee:</td>
       <td><input type="text" name="localidadprovee" value="<?php echo htmlentities($row_rsNombres['localidadprovee'], ENT_COMPAT, 'utf-8'); ?>" size="32"></td>
     </tr>
     <tr valign="baseline">
-      <td align="right" nowrap class="error"><div align="left">Municipioprove:</div></td>
+      <td nowrap align="right">Municipioprove:</td>
       <td><input type="text" name="municipioprove" value="<?php echo htmlentities($row_rsNombres['municipioprove'], ENT_COMPAT, 'utf-8'); ?>" size="32"></td>
     </tr>
     <tr valign="baseline">
-      <td align="right" nowrap class="error"><div align="left">Emailprove:</div></td>
+      <td nowrap align="right">Emailprove:</td>
       <td><input type="text" name="emailprove" value="<?php echo htmlentities($row_rsNombres['emailprove'], ENT_COMPAT, 'utf-8'); ?>" size="32"></td>
     </tr>
     <tr valign="baseline">
@@ -142,12 +102,9 @@ body {
       <td><input type="submit" value="Actualizar registro"></td>
     </tr>
   </table>
-  <p align="center"><a href="<?php echo $logoutAction ?>">Desconectar</a></p>
-  <p>
-    <input type="hidden" name="idproveedor" value="<?php echo $row_rsNombres['idproveedor']; ?>">
-    <input type="hidden" name="MM_update" value="form1">
-    <input type="hidden" name="idproveedor" value="<?php echo $row_rsNombres['idproveedor']; ?>">
-  </p>
+  <input type="hidden" name="idproveedor" value="<?php echo $row_rsNombres['idproveedor']; ?>">
+  <input type="hidden" name="MM_update" value="form1">
+  <input type="hidden" name="idproveedor" value="<?php echo $row_rsNombres['idproveedor']; ?>">
 </form>
 <p>&nbsp;</p>
 </body>
