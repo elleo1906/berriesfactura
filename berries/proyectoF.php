@@ -149,13 +149,6 @@ if (isset($_POST['usuario'])) {
 <form id="form-login" action="<?php echo $loginFormAction; ?>" method="POST" >
       <h2><p align="center">Inicio de Seción</p></h2>
   <div align="center">
-    <div id="apDiv2">
-          <h2>
-            <p class="error"><a href="Index.php" class="error">Ir a la pagina de inicio</a></p>
-          </h2>
-          <p><a href="Index.php"><img src="imagenes/zarza.png" alt="" width="150" height="139"></a></p>
-    </div>
-            
     <p><img src="imagenes/Registro1.png" width="229" height="210"></p>
         <!--=============================================================================================-->
         <!--La sisguientes 2 líneas son para agregar campos al formulario con sus respectivos labels-->
@@ -171,7 +164,6 @@ if (isset($_POST['usuario'])) {
       <div align="center">
         <p></p>
   </div>
-      <div id="apDiv1"></div>
      <h3> <p align="center" id="bot">
         <label for="pass2">Password</label>
         <span class="passwordMinCharsState" id="sprypassword2">
@@ -181,18 +173,16 @@ if (isset($_POST['usuario'])) {
       <div id="contenedor">
         <div align="center">
         <h3>  <input name="submit" type="submit" id="boton" value="Ingresar" class="boton" /></h3>
+        <p>&nbsp;</p>
+        <p><a href="Index.php" class="error">Ir a la pagina de inicio</a></p>
         </div>
         <div id="cuerpo" >
           <div align="center">
-            <p><img src="imagenes/face.png" width="180" height="152"></p>
+            <p><a href="Index.php" class="error"></a><a href="https://www.facebook.com/Berries-Export-Company-928721017231779/"><img src="imagenes/face.png" width="180" height="152"></a></p>
           </div>
         </div>
       </div>
     </form>
-<div id="apDiv3">
-  <h2>&nbsp;</h2>
-  <h2 align="center"><a href="Index.php" class="error">Ir a la pagina de inicio</a> </h2>
-<a href="Index.php"><img src="imagenes/zarza.png" alt="" width="150" height="140" class="error" align="middle"></a></div>
 <script type="text/javascript">
 var sprytextfield1 = new Spry.Widget.ValidationTextField("sprytextfield1");
 var sprypassword2 = new Spry.Widget.ValidationPassword("sprypassword2");

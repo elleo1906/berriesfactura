@@ -59,7 +59,7 @@ function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) {
   return $isValid; 
 }
 
-$MM_restrictGoTo = "error.php";
+$MM_restrictGoTo = "proyectoF.php";
 if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers, $_SESSION['MM_Username'], $_SESSION['MM_UserGroup'])))) {   
   $MM_qsChar = "?";
   $MM_referrer = $_SERVER['PHP_SELF'];
@@ -77,14 +77,16 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 <meta charset="utf-8">
 <title>Documento sin título</title>
 <style type= "text/css">
+@import url("boton.css");
+
 	body{
 	background-position: center;
 	background-image:url(imagenes/moras-en-zarzas-boyanas.jpg);
 	}
 	
 	form{
-	background:url(imagenes/descarga.jpg);
-	width: 677px;
+	background:url(imagenes/moras-en-zarzas-boyanas.jpg);
+	width: 675px;
 	border: 1px solid #003;
 	border-radius:9px;
 	-moz- border-radius:3px;
@@ -118,14 +120,29 @@ color {
 
 <body>
 <form name="form1" method="post" action="">
-  <table width="741" border="1">
+  <table width="675" height="493" border="1">
     <tr>
-      <td width="162" height="357"><a href="buscarpro.php"><img src="buscarpro.jpg" width="162" height="200" align="absmiddle"></a> 
-      <div align="center"><p>Buscar proveedor</p> </div></td>
-      <td width="162"><a href="factura.php"><img src="factura.jpg" width="162" height="200" align="absmiddle"></a>
-      <div align="center"><p>Realizar Factura</p> </div></td>
-      <td width="59"><a href="registrop.php"><img src="Usuario.png" width="162" height="200" align="absmiddle"></a>
-      <div align="center"><p>Registrar Proveedor</p> </div></td>
+     <td height="40" colspan="3"><div align="center" class="error"> <h1>Menu de Acciones </h1></div></td>
+    </tr>
+    <tr>
+      <td width="237" height="445"><div align="center">
+        <p><a href="buscarpro.php"><img src="buscarpro.jpg" width="166" height="221" align="absmiddle"></a> 
+        </p>
+        <p>&nbsp;</p>
+      </div>
+      <div align="center"><p class="error"><a href="buscarpro.php" class="error1">Buscar proveedor</a></p> </div></td>
+      <td width="218"><div align="center">
+        <p><a href="app/reportes/factura.html"><img src="factura.jpg" width="176" height="224" align="absmiddle"></a>
+        </p>
+        <p>&nbsp;</p>
+      </div>
+      <div align="center"><p class="error"><a href="app/reportes/factura.html" class="error1">Realizar Factura</a></p> </div></td>
+      <td width="198"><div align="center">
+        <p><a href="pruepro.php"><img src="imagenes/proveedores.png" width="177" height="221" align="absmiddle"></a>
+        </p>
+        <p>&nbsp;</p>
+      </div>
+      <div align="center"><p class="error"><a href="pruepro.php" class="error1">Registrar Proveedor</a></p> </div></td>
     </tr>
   </table>
 </form>

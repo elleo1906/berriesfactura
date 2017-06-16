@@ -23,9 +23,7 @@ body,td,th {
     <td colspan="3"><img src="imagenes/berries.png" width="1024" height="220"></td>
   </tr>
   <tr>
-    <td><div align="center"><a href="proyectoF.php"><img src="imagenes/inicio.png" width="320" height="67"></a></div></td>
-    <td width="363"><div align="center"><img src="imagenes/Ayuda.png" width="320" height="67"></div></td>
-    <td width="324"><img src="imagenes/Acerca.png" width="320" height="67"></td>
+    <td colspan="3"><div align="center"><a href="proyectoF.php"><img src="imagenes/inicio.png" width="320" height="67"></a></div>      <div align="center"></div></td>
   </tr>
   <tr>
     <td><img src="imagenes/log5.png" width="320" height="290"></td>
